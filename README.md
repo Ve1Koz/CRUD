@@ -13,9 +13,9 @@
 
 **启动说明**
 
-* 启动前，请配置好 [application.yml](https://github.com/TyCoding/spring-boot/blob/master/src/main/resources/application.yml) 中连接数据库的用户名和密码，以及Redis服务器的地址和端口信息。
+* 启动前，请配置好连接数据库的用户名和密码，以及Redis服务器的地址和端口信息。
 
-* 启动前，请创建数据库`seckill`，建表SQL语句放在：[/db/sys_schema.sql](https://github.com/TyCoding/spring-boot/blob/master/db/sys_schema.sql)。具体的建表和建库语句请仔细看SQL文件。
+* 启动前，请创建数据库`seckill`，具体的建表和建库语句请仔细看SQL文件。
 
 * 配置完成后，运行位于 `src/main/cn/tycoding/`下的SpringbootApplication中的main方法，访问 `http://localhost:8080/` 进行API测试。
 
@@ -53,11 +53,6 @@
 │   └── test
 ```
 
-# 准备
-
-开始实战Spring Boot项目，首先，你需要将Spring Boot工程搭建出来。
-
-Spring Boot工程搭建请看我的博客：[Spring Boot入门之工程搭建](http://tycoding.cn/2018/09/28/spring-boot/)
 
 ## Spring Boot应用启动器
 
@@ -103,31 +98,10 @@ Spring Boot项目（即Maven项目），当然拥有最基础的Maven项目结�
 11. 上面说了Spring Boot提供的存放HTML静态页面的目录`resources/templates`是受保护的目录，访问其中的HTML页面要通过Controller映射，这就间接规定了你需要配置Spring的视图解析器，且Controller类不能使用`@RestController`标识。
 
 
-# 起步
-
-*首先：*  **我想特殊强调的是：SpringBoot不是对Spring功能上的增强，而是提供了一种快速使用Spring的方式**。一定要切记这一点。
-
-学习SpringBoot框架，只是为了更简便的使用Spring框架，我们在SSM阶段学习的知识现在放在Spring Boot框架上开发是完全适用的，我们学习的大多数是SpringBoot的自动化配置方式。
-
-因为Spring Boot框架的一大优势就是自动化配置，从pom.xml的配置中就能明显感受到。
-
-所以这里推荐一下我之前的SSM阶段整合项目： [SSM详细入门整合案例](https://github.com/TyCoding/ssm)    [SSM+Redis+Shiro+Solr+Vue.js整合项目](https://github.com/TyCoding/ssm-redis-solr)
-
-## 项目依赖
-
-本项目的依赖文件请看Github仓库：[spring-boot/pom.xml](https://github.com/TyCoding/spring-boot/blob/master/pom.xml)
-
-## 初始化数据库
-
-本项目数据库表设计请看GitHub仓库：[spring-boot/db/](https://github.com/TyCoding/spring-boot/tree/master/db)
-
-请运行项目前，先把数据库表结构建好
-
 ## SpringBoot整合Mybatis
 
-之前已经说过：**SpringBoot框架不是对Spring功能上的增强，而是提供了一种快速使用Spring的方式**
 
-所以说，SpringBoot整合Mybatis的思想和Spring整合Mybatis的思想基本相同，不同之处有两点：
+SpringBoot整合Mybatis的思想和Spring整合Mybatis的思想基本相同，不同之处有两点：
 
 * 1.Mapper接口的XML配置文件变化。之前我们使用Mybatis接口代理开发，规定Mapper映射文件要和接口在一个目录下；而这里Mapper映射文件置于`resources/mapper/`下，且置于`src/main/java/`下的Mapper接口需要用`@Mapper`注解标识，不然映射文件与接口无法匹配。
 
@@ -135,9 +109,6 @@ Spring Boot项目（即Maven项目），当然拥有最基础的Maven项目结�
 
 关于YAML的语法请自行百度，我这里也仅仅是满足基本的配置需求，不涉及那种不易理解的语法。
 
-### 整合配置文件
-
-本例详细代码请看GitHub仓库：[spring-boot/resources/application.yml](https://github.com/TyCoding/spring-boot/blob/master/src/main/resources/application.yml)
 
 在Spring阶段用XML配置mybatis无非就是配置：1.连接池；2.数据库url连接；3.mysql驱动；4.其他初始化配置
 
@@ -354,7 +325,7 @@ pagehelper:
   support-methods-arguments: true
 ```
 
-我这里使用了Mybatis的PageHelper分页插件，前端使用了ElementUI自带的分页插件：具体的教程请查看我的博客：[SpringMVC+ElementUI实现分页查询](http://tycoding.cn/2018/07/30/vue-6/)
+我这里使用了Mybatis的PageHelper分页插件，前端使用了ElementUI自带的分页插件
 
 **核心配置：**
 
@@ -374,9 +345,6 @@ pagehelper:
 
 ## 实现文件上传
 
-这里涉及的无非就是SpringMVC的文件上传，详细的教程请参看我的博客：[SpringMVC实现文件上传和下载](http://tycoding.cn/2018/05/31/Spring-6/)
-
-因为本项目中前端使用了ElementUI+Vue.JS技术，所以前端的文件上传和回显教程请看我的博客：[SpringMVC+ElementUI实现图片上传和回显](http://tycoding.cn/2018/08/05/vue-7/)
 
 除了代码的编写，这里还要在application.yml中进行配置：
 
@@ -423,7 +391,7 @@ public class MyInterceptor {
 
 **解释**
 
-关于Spring AOP的切面编程请自行百度，或者你也可以看我的博客：[Spring AOP思想](http://tycoding.cn/2018/05/25/Spring-3/)。我们需要注意以下几点
+关于Spring AOP的切面编程我们需要注意以下几点
 
 1. 一定要熟悉AspectJ的切点表达式，在这里：`..*`表示其目录下的所有方法和子目录方法。
 
@@ -448,17 +416,4 @@ public class MyInterceptor {
 
 <br/>
 
-# 交流
-
-如果大家有兴趣，欢迎大家加入我的Java交流群：671017003 ，一起交流学习Java技术。博主目前一直在自学JAVA中，技术有限，如果可以，会尽力给大家提供一些帮助，或是一些学习方法，当然群里的大佬都会积极给新手答疑的。所以，别犹豫，快来加入我们吧！
-
-<br/>
-
-# 联系
-
-If you have some questions after you see this article, you can contact me or you can find some info by clicking these links.
-
-- [Blog@TyCoding's blog](http://www.tycoding.cn)
-- [GitHub@TyCoding](https://github.com/TyCoding)
-- [ZhiHu@TyCoding](https://www.zhihu.com/people/tomo-83-82/activities)
 
